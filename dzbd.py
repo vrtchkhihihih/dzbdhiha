@@ -51,36 +51,41 @@ def get_user_by_id(id):
 if __name__ == '__main__':
     init_db()
     
-    choice = input("Введите название функции (update,delete,insert,get): ")
+    while True:
+        choice = input("Введите название функции (update,delete,insert,get,end): ")
 
-    if choice == "update":
+        if choice == "update":
 
-        id = int(input("Введите id для обновления: "))
-        name = input("Введите новое кличку: ")
-        poroda = input("Введите новую порода: ")
-        update_user(id, name, poroda)
+            id = int(input("Введите id для обновления: "))
+            name = input("Введите новое кличку: ")
+            poroda = input("Введите новую порода: ")
+            update_user(id, name, poroda)
 
-    elif choice == "delete":
+        elif choice == "delete":
 
-        id = int(input("Введите id для удаления: "))
-        delete_user(id)
+            id = int(input("Введите id для удаления: "))
+            delete_user(id)
 
-    elif choice == "insert":
+        elif choice == "insert":
 
-        name = input("Введите кличку: ")
-        poroda = input("Введите порода: ")
-        Insert_user(name, poroda)
+            name = input("Введите кличку: ")
+            poroda = input("Введите порода: ")
+            Insert_user(name, poroda)
 
-    elif choice == "get":
+        elif choice == "get":
 
-        id = int(input("Введите id пользователя: "))
-        user_data = get_user_by_id(id)
-        if user_data:
-            print("Данные пользователя:")
-            print(f"ID: {user_data[0]}")
-            print(f"Кличка: {user_data[1]}")
-            print(f"Порода: {user_data[2]}")
+            id = int(input("Введите id пользователя: "))
+            user_data = get_user_by_id(id)
+            if user_data:
+                print("Данные пользователя:")
+                print(f"ID: {user_data[0]}")
+                print(f"Кличка: {user_data[1]}")
+                print(f"Порода: {user_data[2]}")
+            else:
+                print(f"Пет с ID {id} не найден.")
+        elif choice == "end":
+            print("Программа завершена.")
+            break
+
         else:
-            print(f"Пет с ID {id} не найден.")
-    else:
-        print("Некорректный выбор функции. Попробуйте еще раз.")
+            print("Некорректный выбор функции. Попробуйте еще раз.")
